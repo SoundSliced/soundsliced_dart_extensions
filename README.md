@@ -1,6 +1,6 @@
 # soundsliced_dart_extensions
 
-A comprehensive collection of Dart and Flutter extensions that simplify common development tasks and enhance code readability.
+A comprehensive collection of Dart & Flutter extensions to simplify everyday development tasks and enhance code readability. It includes rich utilities for time, formatting, collections, UI layout, JSON, colors, and more.
 
 ## Features
 
@@ -48,7 +48,7 @@ Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  soundsliced_dart_extensions: ^1.0.0
+  soundsliced_dart_extensions: ^1.0.1
 ```
 
 Then run:
@@ -62,7 +62,7 @@ flutter pub get
 Import the package:
 
 ```dart
-import 'package:dart_extensions/dart_extensions.dart';
+import 'package:soundsliced_dart_extensions/soundsliced_dart_extensions.dart';
 ```
 
 ### Duration Examples
@@ -120,7 +120,20 @@ final darker = color.darken(0.3);   // 30% darker
 final hexColor = toHex(Colors.red); // "#FFFF0000"
 ```
 
-### EdgeInsets Extensions
+### EdgeInsets & Layout Extensions
+Fluent & tuple based syntaxes:
+
+```dart
+final p1 = 12.leftPad; // EdgeInsets.only(left: 12)
+final p2 = (8, 16).leftPad.rightPad; // left=8, right=16
+final p3 = (5, 10, 15).leftPad.topPad.rightPad; // left=5, top=10, right=15
+final p4 = (4, 8, 12, 16).leftPad.topPad.rightPad.bottomPad; // left=4, top=8, right=12, bottom=16
+
+final fluent = EdgeInsets.all(10)
+  .addToTop(5)
+  .leftPad // copies first non-zero to left
+  .rightPad; // copies that same value to right
+```
 
 ```dart
 // Fluent padding API
@@ -151,7 +164,12 @@ final earlier = time.subtractMinutes(30); // 14:00
 final rounded = time.toNearestMinute(nearestMinute: 15);
 ```
 
-### List Extensions
+### List & Iterable Extensions
+```dart
+final list = [1,2,3];
+final safeValue = list.safe[10]; // null (out of range)
+final firstEven = list.findFirstWhereOrNull((e) => e.isEven); // 2
+```
 
 ```dart
 // Safe element access
@@ -166,6 +184,26 @@ if (list.doesIndexExist(5)) {
 // Split into chunks
 final letters = ['a', 'b', 'c', 'd', 'e'];
 final chunks = letters.splitInChunks(2); // [[a, b], [c, d], [e]]
+```
+
+### JSON Beautifier & Parsing
+Beautify maps & lists with embedded JSON strings:
+
+```dart
+final raw = {
+  'id': '123',
+  'payload': '{"value":42,"inner":"{\\"x\\":1}"}'
+};
+final pretty = raw.beautifiedJson; // formatted, nested JSON decoded
+
+final jsonString = '{"id":"123","payload":{"value":42,"inner":{"x":1}}}';
+final decoded = jsonString.decodeBeautifiedJsonMap; // nested structure recovered
+```
+
+### BorderRadius Helpers
+```dart
+final circle = 12.allRad; // BorderRadius.circular(12)
+final topCorners = 8.topRad; // Only top corners 8
 ```
 
 ## Requirements
@@ -187,7 +225,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## Issues
 
-Please file issues on the [GitHub repository](https://github.com/SoundSliced/dart_extensions/issues).
+Please file issues on the [GitHub repository](https://github.com/SoundSliced/soundsliced_dart_extensions/issues).
 
 ## License
 
@@ -196,3 +234,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Repository
 
 https://github.com/SoundSliced/soundsliced_dart_extensions
+
+## Example Project
+See `example/lib/main.dart` for a concise runnable showcase of the core extensions.

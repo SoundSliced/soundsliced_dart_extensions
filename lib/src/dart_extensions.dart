@@ -762,8 +762,10 @@ extension DateTimeNullableParameterExtensions on DateTime {
 //********************************************* */
 
 //extension to get the value of a map at a given index
-extension GetByKeyIndex on Map {
-  elementAtIntIndex(int index) => values.elementAt(index);
+extension GetByKeyIndex<K, V> on Map<K, V> {
+  /// Returns the value at the given zero-based [index] in iteration order.
+  /// Throws if the index is out of range.
+  V elementAtIntIndex(int index) => values.elementAt(index);
 }
 
 //********************************************* */
@@ -2533,10 +2535,10 @@ class FluentEdgeInsets extends EdgeInsets {
         super.all(0);
 
   const FluentEdgeInsets._withValues({
-    required double left,
-    required double top,
-    required double right,
-    required double bottom,
+    required super.left,
+    required super.top,
+    required super.right,
+    required super.bottom,
     required List<double> tupleValues,
     required int currentIndex,
   })  : _tupleValues = tupleValues,
@@ -2545,7 +2547,7 @@ class FluentEdgeInsets extends EdgeInsets {
         _topValue = top,
         _rightValue = right,
         _bottomValue = bottom,
-        super.only(left: left, top: top, right: right, bottom: bottom);
+        super.only();
 
   FluentEdgeInsets _withLeft() {
     if (_currentIndex < _tupleValues.length) {
@@ -3378,8 +3380,8 @@ class Radius2 extends BorderRadius {
           bottomRight: Radius.circular(bottomRight ?? bottom ?? right ?? all),
         );
 
-  /// Creates BorderRadius with all corners equal to [value]
-  Radius2.all(double value) : super.circular(value);
+  /// Creates BorderRadius with all corners equal to [radius]
+  Radius2.all(super.radius) : super.circular();
 
   /// Creates BorderRadius with top corners equal to [value]
   Radius2.top(double value)

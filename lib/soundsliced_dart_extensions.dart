@@ -1,6 +1,4 @@
-/// dart_extensions package
-///
-/// This library exports all public APIs for the dart_extensions package.
-library dart_extensions;
+// Package exports for soundsliced_dart_extensions.
+// Library directive removed (unnecessary_library_name lint).
 
 export 'src/dart_extensions.dart';
