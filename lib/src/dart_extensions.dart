@@ -1927,19 +1927,21 @@ extension TimeOfDayExtension on TimeOfDay {
     return (hour + minute / 60).roundDoubleToDecimalPlace(decimalPoint);
   }
 
-  /// Round time to nearest minute interval
+  /// Round time to the next (ceiling) or previous (floor) minute interval.
+  /// When [isRoundDownTo] is false, 14:07 with nearestMinute 15 becomes 14:15.
+  /// When true, it becomes 14:00.
   TimeOfDay toNearestMinute({
     int nearestMinute = 5,
     bool isRoundDownTo = false,
   }) {
+    assert(nearestMinute > 0);
     final totalMinutes = hour * 60 + minute;
-    final int roundedMinutes = isRoundDownTo
-        ? (totalMinutes / nearestMinute).floor() * nearestMinute
-        : (totalMinutes / nearestMinute).round() * nearestMinute;
-
-    // Handle overflow past 24 hours
+    final remainder = totalMinutes % nearestMinute;
+    final base = totalMinutes - remainder; // floor multiple
+    final roundedMinutes = isRoundDownTo
+        ? base
+        : (remainder == 0 ? base : base + nearestMinute); // ceiling multiple
     final clampedMinutes = roundedMinutes % (24 * 60);
-
     return TimeOfDay(
       hour: clampedMinutes ~/ 60,
       minute: clampedMinutes % 60,
@@ -1989,13 +1991,10 @@ extension TimeOfDayExtension on TimeOfDay {
     );
   }
 
-  /// Subtract minutes from TimeOfDay
+  /// Subtract minutes from TimeOfDay with proper wrap-around before midnight.
   TimeOfDay subtractMinutes(int minutes) {
     final totalMinutes = hour * 60 + minute - minutes;
-    final adjustedMinutes = totalMinutes < 0
-        ? (24 * 60) + (totalMinutes % (24 * 60))
-        : totalMinutes % (24 * 60);
-
+    final adjustedMinutes = (totalMinutes % (24 * 60) + (24 * 60)) % (24 * 60);
     return TimeOfDay(
       hour: adjustedMinutes ~/ 60,
       minute: adjustedMinutes % 60,
@@ -3380,8 +3379,8 @@ class Radius2 extends BorderRadius {
           bottomRight: Radius.circular(bottomRight ?? bottom ?? right ?? all),
         );
 
-  /// Creates BorderRadius with all corners equal to [radius]
-  Radius2.all(super.radius) : super.circular();
+  /// Creates BorderRadius with all corners equal to [value]
+  Radius2.all(super.value) : super.circular();
 
   /// Creates BorderRadius with top corners equal to [value]
   Radius2.top(double value)
