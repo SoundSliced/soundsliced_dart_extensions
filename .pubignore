@@ -3,3 +3,6 @@ scripts/
 *.sh
 *.sh
 *.sh
+build/
+.dart_tool/
+example/build/

@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter/material.dart';
+import 'package:s_packages/soundsliced_dart_extensions/soundsliced_dart_extensions.dart';
 import 'package:soundsliced_dart_extensions/soundsliced_dart_extensions.dart';
 
 void main() {

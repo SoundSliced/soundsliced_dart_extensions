@@ -48,7 +48,7 @@ Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  soundsliced_dart_extensions: ^1.0.1
+  soundsliced_dart_extensions: ^2.0.0
 ```
 
 Then run:

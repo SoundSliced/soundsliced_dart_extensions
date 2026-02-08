@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart';
 import 'package:soundsliced_dart_extensions/soundsliced_dart_extensions.dart';
+import 'package:s_packages/soundsliced_dart_extensions/soundsliced_dart_extensions.dart';
 
 // A minimal example showcasing several extensions.
 // Run this inside a Flutter app's main() or copy snippets where needed.
 void main() {
   // Duration shortcuts
-  final d = 5.seconds + 2.minutes + 1.hours;
+  final d = 5.sec + 2.min + 1.hr;
   debugPrint('Duration easy read: ${d.convertToEasyReadString()}');
 
   // DateTime rounding & conversion

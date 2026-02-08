@@ -1,3 +1,10 @@
+
+## 2.0.0
+- package no longer holds the source code for it, but exports/exposes the `s_packages` package instead, which will hold this package's latest source code.
+- The only future changes to this package will be made via `s_packages` package dependency upgrades, in order to bring the new fixes or changes to this package
+- dependent on `s_packages`: ^1.1.2 
+
+
 ## 1.0.1
 
 This release focuses on documentation completeness, improved developer ergonomics, and exposing several utility extensions that were previously undocumented.
