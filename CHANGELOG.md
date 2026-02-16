@@ -1,6 +1,10 @@
 
+
+# 2.1.1
+- CHANGELOG and README updated
+
 ## 2.1.0
-- `s_packages` dependency upgraded to ^1.3.0
+- `s_packages` dependency upgraded 
 - Added `String.truncate(maxLength, {ellipsis})` extension
 - Added `List<T>.groupBy<K>(keyOf)` extension for grouping elements by key
 
