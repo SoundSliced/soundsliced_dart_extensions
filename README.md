@@ -48,7 +48,7 @@ Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  soundsliced_dart_extensions: ^2.0.0
+  soundsliced_dart_extensions: ^2.1.0
 ```
 
 Then run:
@@ -198,6 +198,26 @@ final pretty = raw.beautifiedJson; // formatted, nested JSON decoded
 
 final jsonString = '{"id":"123","payload":{"value":42,"inner":{"x":1}}}';
 final decoded = jsonString.decodeBeautifiedJsonMap; // nested structure recovered
+```
+
+### String Truncation
+
+```dart
+final long = 'Hello, World! This is a long string.';
+final short = long.truncate(13); // "Hello, World…"
+final custom = long.truncate(13, ellipsis: '...'); // "Hello, Wor..."
+```
+
+### List Grouping
+
+```dart
+final people = [
+  {'name': 'Alice', 'dept': 'Eng'},
+  {'name': 'Bob', 'dept': 'Eng'},
+  {'name': 'Carol', 'dept': 'Sales'},
+];
+final grouped = people.groupBy((p) => p['dept']!);
+// {'Eng': [{...}, {...}], 'Sales': [{...}]}
 ```
 
 ### BorderRadius Helpers
