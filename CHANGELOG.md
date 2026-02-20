@@ -1,6 +1,23 @@
+## 2.2.0
+- **`soundsliced_dart_extensions` new utilities added:**
+  - **Iterable/List helpers:** `none`, `countWhere`, `singleWhereOrNull`, `distinctBy`, `sortedBy`, `chunked`, `windowed`, `firstWhereOrNull`, `lastWhereOrNull`, `firstOrNull`, `lastOrNull`, `elementAtOrNull`.
+  - **Map helpers:** `mapKeys`, `mapValues`, `filterKeys`, `filterValues`, plus typed accessors `getString`, `getIntOrNull`, `getDoubleOrNull`, `getBoolOrNull`.
+  - **String helpers:** `isBlank`, `ifBlank`, `toIntOrNull`, `toDoubleOrNull`, `toTitleCase`, `removeDiacritics`.
+  - **Duration helpers:** `formatCompactDuration()` and `toClockString()`.
+  - **Date/num helpers:** `DateTime.clampTo(...)`, `num?.clampOrNull(...)`, and `num?.clampToDoubleOrNull(...)`.
+  - Marked legacy `MyStringExtension.convertStringIntoStringList()` as deprecated in favor of `StringExtensions.convertToListString()` and the top-level helper.
+
+- **`soundsliced_dart_extensions` extension deduplication (BREAKING):**
+  - Removed overlapping extensions already provided by exported `nb_utils` to prevent ambiguous extension resolution.
+  - Removed `DateTime` members from this subpackage: `isToday`, `isYesterday`, `isTomorrow`, `isSameDay`, `startOfDay`, `endOfDay`.
+  - Removed overlapping `String` members from this subpackage: `toCamelCase`, `toSnakeCase`.
+  - Removed overlapping `int` duration members from this subpackage: `seconds`, `minutes`, `hours`, `microseconds`.
+  - **Migration guidance:**
+    - Use `nb_utils` equivalents for removed overlapping APIs (available transitively via `s_packages`).
+    - For `int` durations, prefer retained short-hands from this subpackage where desired: `sec`, `min`, `hr`, `micSec`.
 
 
-# 2.1.1
+## 2.1.1
 - CHANGELOG and README updated
 
 ## 2.1.0

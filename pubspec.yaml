@@ -1,6 +1,6 @@
 name: soundsliced_dart_extensions
 description: A comprehensive collection of Dart extensions for Flutter including DateTime, Duration, String, List, Color, EdgeInsets, TimeOfDay, and more utilities.
-version: 2.1.1
+version: 2.2.0
 homepage: https://github.com/SoundSliced/soundsliced_dart_extensions
 repository: https://github.com/SoundSliced/soundsliced_dart_extensions
 issue_tracker: https://github.com/SoundSliced/soundsliced_dart_extensions/issues
@@ -12,7 +12,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  s_packages: ^1.4.2
+  s_packages: ^1.8.1
 
 dev_dependencies:
   flutter_test:
