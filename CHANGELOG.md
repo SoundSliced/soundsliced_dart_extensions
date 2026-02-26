@@ -1,4 +1,8 @@
-## 2.2.0
+## [3.0.0]
+- `s_packages` dependency upgraded to ^3.0.0
+- Added direct dependency: `strings`
+
+## 2.2.1
 - **`soundsliced_dart_extensions` new utilities added:**
   - **Iterable/List helpers:** `none`, `countWhere`, `singleWhereOrNull`, `distinctBy`, `sortedBy`, `chunked`, `windowed`, `firstWhereOrNull`, `lastWhereOrNull`, `firstOrNull`, `lastOrNull`, `elementAtOrNull`.
   - **Map helpers:** `mapKeys`, `mapValues`, `filterKeys`, `filterValues`, plus typed accessors `getString`, `getIntOrNull`, `getDoubleOrNull`, `getBoolOrNull`.
